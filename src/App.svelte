@@ -59,9 +59,12 @@
       orl.filter((v) => v.ora === ora).filter((v) => v.nap === nap)[0]?.targy ||
       "-";
     if (tk === "-") return "";
-    let targynev = targyset[tk.replaceAll("é", "e").replaceAll("á", "a").replaceAll("ö", "o")];
+    let targynev =
+      targyset[
+        tk.replaceAll("é", "e").replaceAll("á", "a").replaceAll("ö", "o")
+      ];
     if (targynev?.length) return targynev;
-    return tk;
+    return `<i>${tk}</i>`;
   };
 </script>
 
@@ -102,7 +105,7 @@
           {#each napok as nap}
             <td>
               <div class="targy">
-                {targy(ora, nap)}
+                {@html targy(ora, nap)}
               </div>
               <div class="tanar">
                 {tanar(ora, nap)}
@@ -121,7 +124,6 @@
 <style>
   table {
     border-spacing: 10px;
-
   }
   td {
     background-color: rgb(187, 235, 219);
@@ -129,15 +131,20 @@
     border: solid 2px green;
     width: 120px;
     height: 60px;
-    box-shadow: 1px 1px 3px inset black;
+    box-shadow: 1px 1px 3px black;
   }
   div.targy {
-    font-size: 9px;
+    font-size: 10px;
   }
   div.tanar {
-    font-size: 8px;
+    font-size: 9px;
+    color: white;
+    background-color: rgb(14, 108, 59);
   }
   div.terem {
     font-size: 12px;
+  }
+  :global(i) {
+    color: red;
   }
 </style>
