@@ -27,8 +27,8 @@
     tanarok.forEach(
       (v) =>
         (tanarset[v.ok] = v.tit?.trim()
-          ? `${v.tit} ${v.familyname} ${v.firstname}`
-          : `${v.familyname} ${v.firstname}`),
+          ? `${v.tit} ${v.familyname} ${v.firstname || ""}`
+          : `${v.familyname} ${v.firstname || ""}`),
     );
     targyak = (
       await fetch(
@@ -122,6 +122,12 @@
 </main>
 
 <style>
+  select {
+    font-size: 20px;
+    padding: 6px;
+    width: 130px;
+    border-radius: 7px;
+  }
   table {
     border-spacing: 10px;
   }
